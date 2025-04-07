@@ -1,4 +1,3 @@
-
 import { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -13,7 +12,7 @@ import Footer from '@/components/Footer';
 const Minifier = () => {
   const [code, setCode] = useState('');
   const [minifiedCode, setMinifiedCode] = useState('');
-  const [selectedTab, setSelectedTab] = useState('javascript');
+  const [selectedTab, setSelectedTab] = useState<'javascript' | 'css'>('javascript');
   const [processing, setProcessing] = useState(false);
   const { toast } = useToast();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -203,7 +202,7 @@ const person = {
     });
   };
 
-  const handleTabChange = (value: string) => {
+  const handleTabChange = (value: 'javascript' | 'css') => {
     setSelectedTab(value);
     setCode('');
     setMinifiedCode('');
